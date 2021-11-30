@@ -1,0 +1,155 @@
+
+=========================================================================================
+							      File And Directory Permission
+=========================================================================================
+
+Show group of users
+[root@server1 ~]# groups
+root
+[root@server1 ~]# id -Gn
+root
+
+-----------------------------------------------------------------------------------------
+Print group name of a particular user (i.e aditya)
+[root@server1 ~]# groups aditya
+aditya : aditya wheels
+[root@server1 ~]#
+
+-----------------------------------------------------------------------------------------  
+[root@server1 ~]# ls -l | less
+-rwxr-xr-x. 1 root root    0 Jun 19 14:08 ad
+drwxr-xr-x. 2 root root    6 Jun 13 23:30 Music
+lrwxrwxrwx. 1 root root    2 May 30 16:47 s2 -> s1
+-rwxr-xr-x. 1 root root  285 May 31 17:57 s3.sh
+
+		r - read   (Allow to read only)		- - normal regular file
+		w - write  (Allow to modify   )		d - directory
+		x - execute(Allow to execute  )		l - symbolic link
+
+-----------------------------------------------------------------------------------------		
+Permission Category :
+				u	-	user
+				g	-	group
+				o	-	other
+				a 	-	all
+	Every user is in at least one user.
+	Group are used to organize users.
+	Users can belong with many group.
+
+
+Changing Permissions
+		chmod		-		change mode command
+		rwxr 		-		read,write,execute
+		ugoa		-		user category (user,group,other,all)
+		+-=			-		add,subtract,or set permission
+
+----------------------------------------------------------------------------------------
+Changing the permission of files and directories :
+[root@server1 test1]# ls -l
+total 0
+drwxr-xr-x. 2 root root  6 Jun  1 17:26 a
+-rw-r--r--. 1 root root  0 Jun  1 16:23 practical
+drwxr-xr-x. 2 root root 25 Jun 19 15:44 s1
+drwxr-xr-x. 2 root root 16 Jun 19 15:43 s2
+-rw-r--r--. 1 root root  0 Jun 15 23:40 testing
+[root@server1 test1]# chmod g+w practical
+[root@server1 test1]# ls -l
+total 0
+drwxr-xr-x. 2 root root  6 Jun  1 17:26 a
+-rw-rw-r--. 1 root root  0 Jun  1 16:23 practical
+drwxr-xr-x. 2 root root 25 Jun 19 15:44 s1
+drwxr-xr-x. 2 root root 16 Jun 19 15:43 s2
+-rw-r--r--. 1 root root  0 Jun 15 23:40 testing
+
+[root@server1 test1]# chmod o+w practical
+[root@server1 test1]# ls -;
+ls: cannot access '-': No such file or directory
+[root@server1 test1]# ls -l
+total 0
+drwxr-xr-x. 2 root root  6 Jun  1 17:26 a
+-rw-rw-rw-. 1 root root  0 Jun  1 16:23 practical
+drwxr-xr-x. 2 root root 25 Jun 19 15:44 s1
+drwxr-xr-x. 2 root root 16 Jun 19 15:43 s2
+-rw-r--r--. 1 root root  0 Jun 15 23:40 testing
+
+[root@server1 test1]# chmod o-w practical
+[root@server1 test1]# ls -l
+total 0
+drwxr-xr-x. 2 root root  6 Jun  1 17:26 a
+-rw-rw-r--. 1 root root  0 Jun  1 16:23 practical
+drwxr-xr-x. 2 root root 25 Jun 19 15:44 s1
+drwxr-xr-x. 2 root root 16 Jun 19 15:43 s2
+-rw-r--r--. 1 root root  0 Jun 15 23:40 testing
+
+[root@server1 test1]# chmod u=rwx practical
+[root@server1 test1]# ls -l
+total 0
+drwxr-xr-x. 2 root root  6 Jun  1 17:26 a
+-rwxrw-r--. 1 root root  0 Jun  1 16:23 practical
+drwxr-xr-x. 2 root root 25 Jun 19 15:44 s1
+drwxr-xr-x. 2 root root 16 Jun 19 15:43 s2
+-rw-r--r--. 1 root root  0 Jun 15 23:40 testing
+[root@server1 test1]#
+
+-----------------------------------------------------------------------------------------
+[root@server1 test1]# ls -l
+total 0
+drwxr-xr-x. 2 root root  6 Jun  1 17:26 a
+-rw-rw-r--. 1 root root  0 Jun  1 16:23 practical
+drwxr-xr-x. 2 root root 25 Jun 19 15:44 s1
+drwxr-xr-x. 2 root root 16 Jun 19 15:43 s2
+-rw-r--r--. 1 root root  0 Jun 15 23:40 testing
+[root@server1 test1]# chmod u=wrx,g=wr,o=wr practical
+[root@server1 test1]# ls -l
+total 0
+drwxr-xr-x. 2 root root  6 Jun  1 17:26 a
+-rwxrw-rw-. 1 root root  0 Jun  1 16:23 practical
+drwxr-xr-x. 2 root root 25 Jun 19 15:44 s1
+drwxr-xr-x. 2 root root 16 Jun 19 15:43 s2
+-rw-r--r--. 1 root root  0 Jun 15 23:40 testing
+[root@server1 test1]#
+
+-----------------------------------------------------------------------------------------
+Numeric Based Permission		
+		
+		read	write	execute			
+		 0		  0			0		Values for off	
+		 1		  1         1		Binary value for on											
+		 4	      2         1       Base 10 values for on
+		
+	    
+Octal	Binary		String		Description
+0		  0			---			No permissions
+1		  1			--x 		Execute only
+2        10			-w-			Write only
+3        11         -wr         write and execute (2+1)
+4		100			r--			read only
+5		101			r-x			read and execute (4+1)
+6		110			rw-			read and write  (4+2)
+7		111			rwx 		read write and execute (4+2+1)
+
+Example to understand Order meaning:
+					Users(U)		Group(G)		Other(O)
+		Symbol		rwx				r-x				r--
+		Binary		111				101				100
+		Decimal		7				5				4
+		
+Note: We always give numeric permission in octal value.
+Note: In general,it's good to avoid 777 and 666 permission modes.
+[root@server1 test1]# ls -l
+total 0
+drwxr-xr-x. 2 root root  6 Jun  1 17:26 a
+-rwxrw-rw-. 1 root root  0 Jun  1 16:23 practical
+drwxr-xr-x. 2 root root 25 Jun 19 15:44 s1
+drwxr-xr-x. 2 root root 16 Jun 19 15:43 s2
+-rw-r--r--. 1 root root  0 Jun 15 23:40 testing
+[root@server1 test1]# chmod 777 practical
+[root@server1 test1]# ls -l
+total 0
+drwxr-xr-x. 2 root root  6 Jun  1 17:26 a
+-rwxrwxrwx. 1 root root  0 Jun  1 16:23 practical
+drwxr-xr-x. 2 root root 25 Jun 19 15:44 s1
+drwxr-xr-x. 2 root root 16 Jun 19 15:43 s2
+-rw-r--r--. 1 root root  0 Jun 15 23:40 testing
+[root@server1 test1]# 
+ 
