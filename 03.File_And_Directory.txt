@@ -1,0 +1,90 @@
+
+==========================================================================================
+									File And Directory
+==========================================================================================
+
+List all the directory
+[root@server1 ~]# ls
+ad               initial-setup-ks.cfg  s3.sh
+anaconda-ks.cfg  Music                 Templates
+Desktop          Pictures              test1
+Documents        Public                test.py
+Downloads        s1                    Videos
+ifcfg-ens224     s2
+
+------------------------------------------------------------------------------------------
+Make a directory
+[root@server1 ~]# mkdir practical
+[root@server1 ~]# ls
+ad               initial-setup-ks.cfg  s2
+anaconda-ks.cfg  Music                 s3.sh
+Desktop          Pictures              Templates
+Documents        practical             test1
+Downloads        Public                test.py
+ifcfg-ens224     s1                    Videos
+
+------------------------------------------------------------------------------------------
+Change directory
+[root@server1 ~]# cd practical
+
+Print present working directory
+[root@server1 practical]# pwd
+/root/practical
+
+------------------------------------------------------------------------------------------
+Return to home
+[root@server1 practical]# cd ..
+[root@server1 ~]#
+
+------------------------------------------------------------------------------------------
+
+Create an empty file 
+[root@server1 practical]# touch rhel
+[root@server1 practical]# ls
+rhel
+[root@server1 practical]#
+
+------------------------------------------------------------------------------------------
+Create a file 
+[root@server1 practical]# vim class
+
+------------------------------------------------------------------------------------------
+Read a file 
+[root@server1 practical]# cat class
+This is my first file in linux.
+[root@server1 practical]#
+
+------------------------------------------------------------------------------------------
+Delete an empty file 
+[root@server1 practical]# ls
+class  rhel
+[root@server1 practical]# rm class
+rm: remove regular file 'class'? y
+[root@server1 practical]# ls
+rhel
+[root@server1 practical]#
+
+-----------------------------------------------------------------------------------------
+Delete a directory
+[root@server1 ~]# ls
+ad               initial-setup-ks.cfg  s2
+anaconda-ks.cfg  Music                 s3.sh
+Desktop          Pictures              Templates
+Documents        practical             test1
+Downloads        Public                test.py
+ifcfg-ens224     s1                    Videos
+[root@server1 ~]# rm -fr practical
+[root@server1 ~]# ls
+ad               initial-setup-ks.cfg  s3.sh
+anaconda-ks.cfg  Music                 Templates
+Desktop          Pictures              test1
+Documents        Public                test.py
+Downloads        s1                    Videos
+ifcfg-ens224     s2
+[root@server1 ~]#
+
+------------------------------------------------------------------------------------------
+
+
+
+
