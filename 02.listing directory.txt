@@ -1,0 +1,121 @@
+Linux Tutorial 
+==========================================================================================
+									Listing File 
+==========================================================================================
+
+List all the directory
+[root@server1 ~]# ls
+anaconda-ks.cfg  Documents  ifcfg-ens224          Music     Public  s2     Templates  test.py
+Desktop          Downloads  initial-setup-ks.cfg  Pictures  s1      s3.sh  test1      Videos
+[root@server1 ~]#
+
+------------------------------------------------------------------------------------------
+
+List all the directory in long details
+[root@server1 ~]# ls -l
+total 20
+-rw-------. 1 root root 1398 May 29 21:40 anaconda-ks.cfg
+drwxr-xr-x. 2 root root    6 Jun 13 23:30 Desktop
+drwxr-xr-x. 2 root root    6 Jun 13 23:30 Documents
+drwxr-xr-x. 2 root root    6 Jun 13 23:30 Downloads
+-rw-r--r--. 1 root root  314 Jun  1 00:22 ifcfg-ens224
+-rw-r--r--. 1 root root 1916 May 29 21:50 initial-setup-ks.cfg
+drwxr-xr-x. 2 root root    6 Jun 13 23:30 Music
+drwxr-xr-x. 2 root root    6 Jun 13 23:30 Pictures
+drwxr-xr-x. 2 root root    6 Jun 13 23:30 Public
+-rw-r--r--. 1 root root    0 May 30 16:47 s1
+lrwxrwxrwx. 1 root root    2 May 30 16:47 s2 -> s1
+-rwxr-xr-x. 1 root root  285 May 31 17:57 s3.sh
+drwxr-xr-x. 2 root root    6 Jun 13 23:30 Templates
+drwxr-xr-x. 3 root root   47 Jun 15 23:40 test1
+-rwxr-xr-x. 1 root root  127 Jun 18 18:26 test.py
+drwxr-xr-x. 2 root root    6 Jun 13 23:30 Videos
+[root@server1 ~]#
+
+------------------------------------------------------------------------------------------
+Show all directory including hidden directory
+[root@server1 ~]# ls -a
+.                .bash_profile  .dbus      .ICEauthority         Music     s2         test.py
+..               .bashrc        Desktop    ifcfg-ens224          Pictures  s3.sh      Videos
+anaconda-ks.cfg  .cache         Documents  initial-setup-ks.cfg  .pki      .tcshrc    .viminfo
+.bash_history    .config        Downloads  .lesshst              Public    Templates
+.bash_logout     .cshrc         .esd_auth  .local                s1        test1
+
+------------------------------------------------------------------------------------------
+
+List all the directory according to recetly used time
+[root@server1 ~]# ls -t
+test.py  Pictures  Music    Documents  Public     ifcfg-ens224  s2  initial-setup-ks.cfg
+test1    Videos    Desktop  Downloads  Templates  s3.sh         s1  anaconda-ks.cfg
+
+------------------------------------------------------------------------------------------
+
+List all the directory recursively
+[root@server1 ~]# ls -R
+.:
+anaconda-ks.cfg  Documents  ifcfg-ens224          Music     Public  s2     Templates  test.py
+Desktop          Downloads  initial-setup-ks.cfg  Pictures  s1      s3.sh  test1      Videos
+
+./Desktop:
+
+./Documents:
+
+./Downloads:
+
+./Music:
+
+./Pictures:
+
+./Public:
+
+./Templates:
+
+./test1:
+a  practical  testing
+
+./test1/a:
+
+./Videos:
+
+------------------------------------------------------------------------------------------
+
+[root@server1 ~]# ls -ltrha
+total 72K
+-rw-r--r--.  1 root root  129 Aug 12  2018 .tcshrc
+-rw-r--r--.  1 root root  100 Aug 12  2018 .cshrc
+-rw-r--r--.  1 root root  176 Aug 12  2018 .bashrc
+-rw-r--r--.  1 root root  176 Aug 12  2018 .bash_profile
+-rw-r--r--.  1 root root   18 Aug 12  2018 .bash_logout
+dr-xr-xr-x. 17 root root  224 May 29 21:21 ..
+-rw-------.  1 root root 1.4K May 29 21:40 anaconda-ks.cfg
+drwx------.  3 root root   25 May 29 21:44 .dbus
+-rw-r--r--.  1 root root 1.9K May 29 21:50 initial-setup-ks.cfg
+-rw-r--r--.  1 root root    0 May 30 16:47 s1
+lrwxrwxrwx.  1 root root    2 May 30 16:47 s2 -> s1
+-rwxr-xr-x.  1 root root  285 May 31 17:57 s3.sh
+-rw-r--r--.  1 root root  314 Jun  1 00:22 ifcfg-ens224
+-rw-------.  1 root root   35 Jun  2 22:44 .lesshst
+drwx------.  3 root root   19 Jun 13 23:30 .local
+drwxr-xr-x.  2 root root    6 Jun 13 23:30 Templates
+drwxr-xr-x.  2 root root    6 Jun 13 23:30 Public
+drwxr-xr-x.  2 root root    6 Jun 13 23:30 Downloads
+drwxr-xr-x.  2 root root    6 Jun 13 23:30 Documents
+drwxr-xr-x.  2 root root    6 Jun 13 23:30 Desktop
+drwxr-xr-x.  2 root root    6 Jun 13 23:30 Music
+drwxr-xr-x.  2 root root    6 Jun 13 23:30 Videos
+drwxr-xr-x.  2 root root    6 Jun 13 23:30 Pictures
+-rw-------.  1 root root   16 Jun 13 23:30 .esd_auth
+drwxr-----.  3 root root   19 Jun 13 23:30 .pki
+drwx------. 12 root root  276 Jun 14 15:46 .cache
+drwx------. 12 root root  243 Jun 14 15:46 .config
+drwxr-xr-x.  3 root root   47 Jun 15 23:40 test1
+-rw-------.  1 root root 1.6K Jun 18 17:03 .ICEauthority
+-rw-------.  1 root root 4.7K Jun 18 18:01 .bash_history
+-rwxr-xr-x.  1 root root  127 Jun 18 18:26 test.py
+-rw-------.  1 root root 7.7K Jun 18 18:26 .viminfo
+dr-xr-x---. 16 root root 4.0K Jun 18 18:26 .
+[root@server1 ~]#
+
+------------------------------------------------------------------------------------------
+
+
